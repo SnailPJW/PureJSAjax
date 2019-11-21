@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX</h1>
+    <p>REF:http://test.domojyun.net/MEMO/JavaScript/10_ajax.html
+        <a href="http://test.domojyun.net/MEMO/JavaScript/10_ajax.html" target="_blank">Link</a>
+    </p>
+    <button id='testapi'>Click Me</button>
+    <script>
+        document.getElementById("testapi").addEventListener("click", function() {
+            
+            //建立 Ajax 物件
+            var ajax = getXMLHttpRequestObject();           //使用函數
+
+            // 指定結果處理器
+            ajax.onreadystatechange = handleStateChange;    //此處也允許使用匿名變數
+
+            // 發出請求
+            //.open( 請求類型[字串], 伺服器資源的 URL[字串], 請求採用同步或非同步[true/false] )：呼叫物件的 open() 方法，執行請求
+            // GET 請求最適合讀取資料；POST 請求是提交表單的標準方法
+            // 注意，方法類型必須採用全大寫字母
+
+
+            // .send()：實際發送請求
+
+            // .abort()：撤銷請求
+
+            // ajax.open('GET', 'http://www.example.com/page.php', true);
+            // var ajaxAbortTimer = setTimeout (function(){
+            //     if(ajax){
+            //         ajax.abort();
+            //         ajax = null;
+            //     }
+            // }, 5000);
+
+            // 處理伺服器回應
+        })
+        
+        function getXMLHttpRequestObject(){      
+            var ajax = null;                       //如果無法指派 XMLHttpRequest 物件給 ajax，該變數的值為 null
+            if(window.XMLHttpRequest){
+                ajax = new XMLHttpRequest();
+            }else if(window.ActiveXObject){        //IE 較舊版本
+                ajax = new ActiveXObject('MSXML2.XMLHTTP.3.0');
+            }
+            return ajax;
+        }
+    </script>
+</body>
+</html>
